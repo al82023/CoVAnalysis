@@ -28,3 +28,32 @@ maximum(lengths)
 
     Mean length = 29847.432790224033 --> min and max make sense
 
+## Identifying outliers
+
+1. Use the Plots package to create a histogram of your coronavirus genome lengths.
+
+2. Remove the legend and add more descriptive axis labels to this plot
+
+```julia
+using Plots
+histogram(lengths, legend = false, xaxis = "Genome Lengths", yaxis = "Frequency")
+```
+
+3. Filter sequences to remove any that have a length of less than 25k bases
+
+    Find the index of all the sequences that are less than 25K bases long, then remove the items at those indices from the sequence vector and the headers vector and the lengths vector.
+
+```julia
+lessthan25k = findall(x->x<25000, lengths);
+deleteat!(headers, lessthan25k);
+deleteat!(sequences, lessthan25k);
+deleteat!(lengths, lessthan25k);
+```
+
+4. Ensure that min of the sequence length is actually > 25k bases and that sequence and header vectors have the same length
+
+```julia
+minimum(lengths)
+#29013
+@assert length(headers) == length(sequences)
+```
