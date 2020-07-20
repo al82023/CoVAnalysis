@@ -57,3 +57,11 @@ minimum(lengths)
 #29013
 @assert length(headers) == length(sequences)
 ```
+
+## Plot the result
+
+1. Create a new histogram that shows the distribution of filtered sequences, using the same methods as above
+
+```julia
+histogram(lengths, legend = false, xaxis = "Genome Lengths", yaxis = "Frequency")
+```
