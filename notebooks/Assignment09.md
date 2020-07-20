@@ -73,3 +73,7 @@ histogram(lengths, legend = false, xaxis = "Genome Lengths", yaxis = "Frequency"
 1. Copy kmercount function from Assignment04 into bioinformatics package
 
 2. Modify it so that it takes 2 arguments - a sequence and an integer (k), and returns all of the unique kmers of length k. Do not keep kmers with ambiguous bases (anything other than A, T, G, or C).
+
+## Comparing unique kmers
+
+1. Add a function to your bioinformatics package that takes two kmer sets and calculates the distance between them.
