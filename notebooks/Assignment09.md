@@ -9,9 +9,7 @@
 ```julia
 using BISC195Bioinformatics
 using Statistics
-parsedfile = parse_fasta("/Users/anika/Desktop/BISC195/CoV2Analysis/data/cov-sequences.fasta");
-headers = parsedfile[1];
-sequences = parsedfile[2];
+headers, seqquences = parse_fasta("/Users/anika/Desktop/BISC195/CoV2Analysis/data/cov-sequences.fasta");
 lengths = map(length, sequences);
 ```
 
@@ -55,7 +53,7 @@ deleteat!(lengths, lessthan25k);
 ```julia
 minimum(lengths)
 #29013
-@assert length(headers) == length(sequences)
+@assert length(headers) == length(sequences) # 👍
 ```
 
 ## Plot the result
@@ -68,10 +66,9 @@ histogram(lengths, legend = false, xaxis = "Genome Lengths", yaxis = "Frequency"
 
 # Kmer analysis of coronavirus genomes
 
-# Unique kmers
+## Unique kmers
 
 1. Copy kmercount function from Assignment04 into bioinformatics package
-
 2. Modify it so that it takes 2 arguments - a sequence and an integer (k), and returns all of the unique kmers of length k. Do not keep kmers with ambiguous bases (anything other than A, T, G, or C).
 
 ## Comparing unique kmers

@@ -11,28 +11,34 @@ using Statistics
 
 ## I copied the `meanandstdoflengthandgc` function (from Assignment 6).
 
-This function takes a path to a file as an argument and returns the mean and standard deviation of the lengths and gc content of the sequences in the given file.
+<!-- see sembr.org -->
+This function takes a path to a file as an argument
+and returns the mean and standard deviation
+of the lengths and gc content of the sequences in the given file.
 
 The function executes the following:
 
 1. parse the file, assigning the result to `parsedfile`
-
 2. assign the array of sequences returned to `sequences`
-
-3. calculate the length of each sequence by mapping the `length` function onto each element of `sequences`, assigning the result to `lengths`
-
-4. calculate the mean and standard deviation of `lengths`, assigning the results to `meanlength` and `stdlength` respectively
-
-5. calculate the gc content of each sequence by mapping the `gc_content` function onto each element of `sequences`, assigning the result to `gc`
-
-6. calculate the mean and standard deviation of `gc`, assigning the results to `meangc` and `stdgc` respectively
-
+3. calculate the length of each sequence 
+   by mapping the `length` function onto each element of `sequences`,
+   assigning the result to `lengths`
+4. calculate the mean and standard deviation of `lengths`,  
+   assigning the results to `meanlength` and `stdlength` respectively
+5. calculate the gc content of each sequence
+   by mapping the `gc_content` function onto each element of `sequences`,
+   assigning the result to `gc`
+6. calculate the mean and standard deviation of `gc`,
+   assigning the results to `meangc` and `stdgc` respectively
 7. return a Tuple consisting of `meanlength`, `stdlength`, `meangc`, and `stdgc`
 
 ```julia
+# for long function names like this, probably good to use underscores, eg: mean_and_std_of_length_and_gc
+# alternatively, a name like `summarystats` might work
 function meanandstdoflengthandgc(path)
-    parsedfile = parse_fasta(path)
-    sequences = parsedfile[2]
+    # since you don't need the first thing, you can just assign it to a dummy variable
+    # alternatively, index straight into the function, eg `sequences = parse_fasta(path)[2]`
+    _, sequences = parse_fasta(path)
     lengths = map(length, sequences)
     meanlength = mean(lengths)
     stdlength = std(lengths)
